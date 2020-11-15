@@ -1,0 +1,34 @@
+{
+  "name": "wyze-hls",
+  "version": "1.0.0",
+  "description": "Converts MP4 files from WyzeCam NFS to HLS stream. Much more stable alternative to RTSP firmware.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node -r esm app.js",
+    "lint": "eslint --ext .js .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/n1ckyrush/wyzecam-hls",
+  "author": "n1ckyrush",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "esm": "^3.2.25"
+  },
+  "keywords": [
+    "wyzecam", 
+    "wyze", 
+    "HLS", 
+    "RTSP", 
+    "NFS", 
+    "ffmpeg", 
+    "CCTV",
+    "NVR",
+    "Shinobi",
+    "motioneye"
+  ]
+}
