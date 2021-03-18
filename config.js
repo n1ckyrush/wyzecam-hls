@@ -18,7 +18,10 @@ export const systemConfig = {
 
   // How often to output stats (in seconds)
   // Set 0 to disable
-  STATS_PERIOD_SEC: 30
+  STATS_PERIOD_SEC: 30,
+
+  // Full path to ffmpeg. If you want to use the copy that is in your path simply set this to 'ffmpeg'.
+  FFMPEG_PATH: 'ffmpeg'
 }
 
 // This is default settings for each camera

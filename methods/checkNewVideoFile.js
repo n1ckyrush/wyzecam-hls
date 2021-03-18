@@ -1,5 +1,6 @@
 import { spawn } from 'child_process'
 import { promises as fs } from 'fs'
+import { systemConfig } from '../config'
 
 import log from './log'
 
@@ -9,13 +10,14 @@ const FRESH_FILE_THRESHOLD_SEC = 10
 
 const convertFile = async (camera, filepath, startNumber) => {
   const logPrefix = `${camera.logPrefix}[convertFile]`
-  const cmd = 'ffmpeg'
+  const cmd = systemConfig.FFMPEG_PATH || 'ffmpeg'
   const args = [
     '-i', filepath,
-    '-vcodec', 'copy',
-    '-c', 'copy',
+    '-c:v', 'copy',
+    '-c:a', 'aac',
     '-hls_allow_cache', '0',
     '-hls_list_size', '0',
+    '-force_key_frames', `expr:"gte(t,n_forced*2)"`,
     '-hls_time', '2',
     '-start_number', startNumber,
     '-hls_flags', 'delete_segments+omit_endlist',

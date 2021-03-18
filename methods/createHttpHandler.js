@@ -42,18 +42,21 @@ export const createHttpHandler = (camerasInstances) => {
         const currentSegments = []
         for (const segNum in cameraInstance.state.segments) {
           const seg = cameraInstance.state.segments[segNum]
+          
+          if (segNum > systemConfig.MAX_SEGMENTS_IN_PLAYLIST - 1) {
+            break
+          }
+
+          if (segNum == 0 || cameraInstance.state.segments[segNum - 1].duration < 2) currentSegments.push(`#EXT-X-DISCONTINUITY`)
           currentSegments.push(`#EXTINF:${seg.duration},`)
           currentSegments.push(`/${cameraName}/${seg.filename}`)
           log('debug2', logPrefix, `[${cameraName}][${cameraInstance.state.mediaSequenceCounter}] ${seg.filename}`)
-
-          if ((segNum + 1) >= systemConfig.MAX_SEGMENTS_IN_PLAYLIST) {
-            break
-          }
         }
 
         const plsBody = [
           '#EXTM3U',
           '#EXT-X-VERSION:3',
+          '#EXT-X-ALLOW-CACHE:NO',
           '#EXT-X-TARGETDURATION:2',
           `#EXT-X-MEDIA-SEQUENCE:${cameraInstance.state.mediaSequenceCounter}`,
           currentSegments.join('\n')
