@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'path-extra'
 
 export const systemConfig = {
   // How detailed would you like to have logs in console (from 0 to 3)
