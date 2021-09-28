@@ -20,15 +20,19 @@
     "esm": "^3.2.25"
   },
   "keywords": [
-    "wyzecam", 
-    "wyze", 
-    "HLS", 
-    "RTSP", 
-    "NFS", 
-    "ffmpeg", 
+    "wyzecam",
+    "wyze",
+    "HLS",
+    "RTSP",
+    "NFS",
+    "ffmpeg",
     "CCTV",
     "NVR",
     "Shinobi",
     "motioneye"
-  ]
+  ],
+  "dependencies": {
+    "path-extra": "^4.3.0",
+    "pm2": "^5.1.2"
+  }
 }

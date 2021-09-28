@@ -61,6 +61,7 @@ export const createHttpHandler = (camerasInstances) => {
 
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/x-mpegURL')
+        res.setHeader('Cache-Control', 'no-cache')
         res.end(plsBody.join('\n'))
         return
       }
